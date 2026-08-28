@@ -3,22 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Trading Dashboard</title>
+    <title>My Personal Trading Dashboard - Master Edition</title>
     <style>
-        /* டிவி மற்றும் மொபைல் திரைக்கு ஏற்ற வடிவமைப்பு */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            background-color: #0c0f14; /* டிரேடிங்கிற்கு ஏற்ற டார்க் பேக்கிரவுண்ட் */
+            background-color: #0c0f14;
             font-family: Arial, sans-serif;
             overflow: hidden;
             height: 100vh;
             width: 100vw;
         }
-        /* திரையை சரியாக கிரிட் அமைப்பாகப் பிரிக்கும் முறை (3 பத்திகள், 2 வரிசைகள்) */
+        /* 3 பத்திகள், 2 வரிசைகள் கொண்ட 6 பெட்டி வடிவமைப்பு */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -28,7 +27,6 @@
             height: 100%;
             padding: 6px;
         }
-        /* ஒவ்வொரு ஆப் பாக்ஸின் வடிவமைப்பு */
         .app-box {
             background-color: #161b22;
             border: 2px solid #30363d;
@@ -36,20 +34,19 @@
             position: relative;
             width: 100%;
             height: 100%;
+            overflow: hidden;
         }
-        /* ஆப்களின் பக்கங்கள் முழுமையாக உள்ளே தெரிய */
         .app-box iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        /* ஆப்களின் தலைப்புப் பெயர் */
         .app-title {
             position: absolute;
             top: 6px;
             left: 6px;
-            background: rgba(0, 0, 0, 0.8);
-            color: #58a6ff; /* நீல நிற ஹைலைட் */
+            background: rgba(0, 0, 0, 0.85);
+            color: #58a6ff;
             padding: 3px 10px;
             font-size: 11px;
             font-weight: bold;
@@ -58,40 +55,129 @@
             pointer-events: none;
             border: 1px solid #30363d;
         }
+        /* 6வது பெட்டியான Master Dashboard-க்கான ஸ்டைல் */
+        .master-dashboard {
+            color: #c9d1d9;
+            padding: 35px 12px 12px 12px;
+            height: 100%;
+            overflow-y: auto;
+            font-size: 12px;
+        }
+        .market-section {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        .card {
+            background: #21262d;
+            border: 1px solid #30363d;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        .card h4 {
+            color: #8b949e;
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+        .card .value {
+            font-size: 13px;
+            font-weight: bold;
+            color: #f0f6fc;
+        }
+        .signal-box {
+            background: #1f6feb;
+            color: white;
+            text-align: center;
+            padding: 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 13px;
+            margin-top: 5px;
+        }
+        .details-table {
+            width: 100%;
+            margin-top: 8px;
+            border-collapse: collapse;
+        }
+        .details-table td {
+            padding: 4px 6px;
+            border-bottom: 1px solid #30363d;
+            font-size: 11px;
+        }
+        .details-table td:nth-child(even) {
+            text-align: right;
+            font-weight: bold;
+            color: #58a6ff;
+        }
     </style>
 </head>
 <body>
 
     <div class="dashboard-grid">
         
-        <!-- ஆப் 1: v0 Indian Indicator -->
         <div class="app-box">
             <div class="app-title">1. v0 Indian Indicator</div>
             <iframe src="https://v0.app/sharvikaenterprises2015-8236/indian-indicator"></iframe>
         </div>
 
-        <!-- ஆப் 2: Emergent Chat -->
         <div class="app-box">
             <div class="app-title">2. Emergent Chat</div>
             <iframe src="https://app.emergent.sh/chat"></iframe>
         </div>
 
-        <!-- ஆப் 3: Lovable Project -->
         <div class="app-box">
             <div class="app-title">3. Lovable Project</div>
             <iframe src="https://lovable.dev/projects/fa629ed0-5706-4bdd-b812-6a8b869da08a"></iframe>
         </div>
 
-        <!-- ஆப் 4: Bolt Indian Stock Market -->
         <div class="app-box">
             <div class="app-title">4. Bolt Indian Stock Market</div>
             <iframe src="https://indian-stock-market-ajqc.bolt.host/"></iframe>
         </div>
 
-        <!-- ஆப் 5: Streamlit Angel One Connection -->
         <div class="app-box">
             <div class="app-title">5. Streamlit Angel One</div>
             <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/#1-angel-one-connection"></iframe>
+        </div>
+
+        <div class="app-box">
+            <div class="app-title">6. MASTER DASHBOARD</div>
+            <div class="master-dashboard">
+                <div class="market-section">
+                    <div class="card">
+                        <h4>NIFTY</h4>
+                        <div class="value">22,139.50 (+0.45%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>BANK NIFTY</h4>
+                        <div class="value">47,820.10 (+0.72%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>SENSEX</h4>
+                        <div class="value">73,150.25 (+0.38%)</div>
+                    </div>
+                    <div class="card">
+                        <h4>FINNIFTY</h4>
+                        <div class="value">21,410.00 (+0.55%)</div>
+                    </div>
+                </div>
+
+                <div class="signal-box">
+                    SIGNAL: STRONG BUY (Confidence: 86%)
+                </div>
+
+                <table class="details-table">
+                    <tr><td>Market Trend</td><td>Bullish</td></tr>
+                    <tr><td>Market Regime</td><td>High Volatility</td></tr>
+                    <tr><td>Risk Level</td><td>Moderate</td></tr>
+                    <tr><td>India VIX</td><td>13.45 (-2.1%)</td></tr>
+                    <tr><td>FII / DII Flow</td><td>+1,250 Cr (Bullish)</td></tr>
+                    <tr><td>Options / OI</td><td>Call Writing Heavy</td></tr>
+                    <tr><td>News Impact</td><td>Positive</td></tr>
+                    <tr><td>Movement (1D-5D)</td><td>Bullish Continuation</td></tr>
+                </table>
+            </div>
         </div>
 
     </div>
