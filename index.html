@@ -3,58 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Share Market Multi-View Dashboard</title>
+    <title>My Personal Trading Dashboard</title>
     <style>
-        /* டிவி திரைக்கு ஏற்றவாறு முழுப் பக்கத்தையும் அமைத்தல் */
+        /* டிவி மற்றும் மொபைல் திரைக்கு ஏற்ற வடிவமைப்பு */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            background-color: #121212; /* கண்கள் வலிக்காமல் இருக்க டார்க் மோடு */
+            background-color: #0c0f14; /* டிரேடிங்கிற்கு ஏற்ற டார்க் பேக்கிரவுண்ட் */
             font-family: Arial, sans-serif;
             overflow: hidden;
             height: 100vh;
             width: 100vw;
         }
-        /* திரையை 6 பாகங்களாகப் பிரிக்கும் கிரிட் லேஅவுட் (3 பத்திகள், 2 வரிசைகள்) */
+        /* திரையை சரியாக 6 பாகங்களாகப் பிரிக்கும் கிரிட் (3 பத்திகள், 2 வரிசைகள்) */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 4px; /* பாக்ஸ்களுக்கு இடையே உள்ள இடைவெளி */
+            gap: 6px;
             width: 100%;
             height: 100%;
-            padding: 4px;
+            padding: 6px;
         }
-        /* ஒவ்வொரு சேனல் பாக்ஸின் வடிவமைப்பு */
-        .channel-box {
-            background-color: #1e1e1e;
-            border: 1px solid #333;
-            border-radius: 4px;
+        /* ஒவ்வொரு ஆப் பாக்ஸின் வடிவமைப்பு */
+        .app-box {
+            background-color: #161b22;
+            border: 2px solid #30363d;
+            border-radius: 6px;
             position: relative;
             width: 100%;
             height: 100%;
         }
-        /* பாக்ஸின் உள்ளே லிங்க் பக்கங்கள் முழுமையாகத் தெரிய */
-        .channel-box iframe {
+        /* ஆப்களின் பக்கங்கள் முழுமையாக உள்ளே தெரிய */
+        .app-box iframe {
             width: 100%;
             height: 100%;
             border: none;
         }
-        /* சேனல் பெயர் தலைப்பு */
-        .channel-title {
+        /* ஆப்களின் தலைப்புப் பெயர் */
+        .app-title {
             position: absolute;
-            top: 3px;
-            left: 3px;
+            top: 6px;
+            left: 6px;
             background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 2px 6px;
+            color: #58a6ff; /* நீல நிற ஹைலைட் */
+            padding: 3px 10px;
             font-size: 11px;
-            border-radius: 3px;
+            font-weight: bold;
+            border-radius: 4px;
             z-index: 10;
             pointer-events: none;
+            border: 1px solid #30363d;
         }
     </style>
 </head>
@@ -62,40 +64,40 @@
 
     <div class="dashboard-grid">
         
-        <!-- சேனல் 1: Angel One Connection (Streamlit) -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 1 (Angel One)</div>
-            <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/?embed=true#1-angel-one-connection"></iframe>
+        <!-- ஆப் 1: Emergent Chat -->
+        <div class="app-box">
+            <div class="app-title">1. Emergent Chat</div>
+            <iframe src="https://app.emergent.sh/chat"></iframe>
         </div>
 
-        <!-- சேனல் 2: Lovable FNO -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 2 (Lovable FNO)</div>
-            <iframe src="https://trend-oracle-now.lovable.app/fno"></iframe>
+        <!-- ஆப் 2: Trend Oracle Signals -->
+        <div class="app-box">
+            <div class="app-title">2. Trend Oracle Signals</div>
+            <iframe src="https://trend-oracle-now.lovable.app/signals"></iframe>
         </div>
 
-        <!-- சேனல் 3: Trendpulse (Streamlit) -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 3 (Trendpulse)</div>
-            <iframe src="https://trendpulse-alpha-dztmhwavm8f4var6svoh8r.streamlit.app/?embed=true"></iframe>
+        <!-- ஆப் 3: Bolt Host App -->
+        <div class="app-box">
+            <div class="app-title">3. Application Development (Bolt)</div>
+            <iframe src="https://application-developm-1ef9.bolt.host"></iframe>
         </div>
 
-        <!-- சேனல் 4: Indian Commodity (Bolt) -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 4 (Indian Commodity)</div>
-            <iframe src="https://indian-commodity-pre-563n.bolt.host/"></iframe>
+        <!-- ஆப் 4: Universal Candlestick Engine -->
+        <div class="app-box">
+            <div class="app-title">4. Universal Candlestick Engine</div>
+            <iframe src="https://universalcandlestickengine-5rqqcnbyejsqrhvaqv6quz.streamlit.app/"></iframe>
         </div>
 
-        <!-- சேனல் 5: கூடுதல் ஆப் அல்லது சார்ட் சேர்க்க -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 5</div>
-            <iframe src="https://tradingview.com"></iframe>
+        <!-- ஆப் 5: Marketverse News Intelligence -->
+        <div class="app-box">
+            <div class="app-title">5. Marketverse News Intelligence</div>
+            <iframe src="https://marketverse-news-intelligence-bwr8sgbyihfctid5hzx6q7.streamlit.app/"></iframe>
         </div>
 
-        <!-- சேனல் 6: கூடுதல் ஆப் அல்லது சார்ட் சேர்க்க -->
-        <div class="channel-box">
-            <div class="channel-title">சேனல் 6</div>
-            <iframe src="https://google.com"></iframe>
+        <!-- ஆப் 6: Angel One Connection App -->
+        <div class="app-box">
+            <div class="app-title">6. Angel One Connection</div>
+            <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/#1-angel-one-connection"></iframe>
         </div>
 
     </div>
