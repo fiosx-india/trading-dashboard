@@ -23,15 +23,15 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 5px; /* பாக்ஸ்களுக்கு இடையே உள்ள இடைவெளி */
+            gap: 4px; /* பாக்ஸ்களுக்கு இடையே உள்ள இடைவெளி */
             width: 100%;
             height: 100%;
-            padding: 5px;
+            padding: 4px;
         }
         /* ஒவ்வொரு சேனல் பாக்ஸின் வடிவமைப்பு */
         .channel-box {
             background-color: #1e1e1e;
-            border: 2px solid #333;
+            border: 1px solid #333;
             border-radius: 4px;
             position: relative;
             width: 100%;
@@ -46,12 +46,12 @@
         /* சேனல் பெயர் தலைப்பு */
         .channel-title {
             position: absolute;
-            top: 5px;
-            left: 5px;
-            background: rgba(0, 0, 0, 0.7);
+            top: 3px;
+            left: 3px;
+            background: rgba(0, 0, 0, 0.8);
             color: #fff;
-            padding: 2px 8px;
-            font-size: 12px;
+            padding: 2px 6px;
+            font-size: 11px;
             border-radius: 3px;
             z-index: 10;
             pointer-events: none;
@@ -62,37 +62,37 @@
 
     <div class="dashboard-grid">
         
-        <!-- சேனல் 1: Streamlit App (embed=true சேர்க்கப்பட்டுள்ளது) -->
+        <!-- சேனல் 1: Angel One Connection (Streamlit) -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 1 (Angel One)</div>
             <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/?embed=true#1-angel-one-connection"></iframe>
         </div>
 
-        <!-- சேனல் 2: Lovable FNO App -->
+        <!-- சேனல் 2: Lovable FNO -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 2 (Lovable FNO)</div>
             <iframe src="https://trend-oracle-now.lovable.app/fno"></iframe>
         </div>
 
-        <!-- சேனல் 3: Streamlit App (embed=true சேர்க்கப்பட்டுள்ளது) -->
+        <!-- சேனல் 3: Trendpulse (Streamlit) -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 3 (Trendpulse)</div>
             <iframe src="https://trendpulse-alpha-dztmhwavm8f4var6svoh8r.streamlit.app/?embed=true"></iframe>
         </div>
 
-        <!-- சேனல் 4: Indian Commodity App -->
+        <!-- சேனல் 4: Indian Commodity (Bolt) -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 4 (Indian Commodity)</div>
             <iframe src="https://indian-commodity-pre-563n.bolt.host/"></iframe>
         </div>
 
-        <!-- சேனல் 5 -->
+        <!-- சேனல் 5: கூடுதல் ஆப் அல்லது சார்ட் சேர்க்க -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 5</div>
             <iframe src="https://tradingview.com"></iframe>
         </div>
 
-        <!-- சேனல் 6 -->
+        <!-- சேனல் 6: கூடுதல் ஆப் அல்லது சார்ட் சேர்க்க -->
         <div class="channel-box">
             <div class="channel-title">சேனல் 6</div>
             <iframe src="https://google.com"></iframe>
