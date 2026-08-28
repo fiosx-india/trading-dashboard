@@ -1,0 +1,23 @@
+<div class="card">
+    <h3>7. NIFTY 50 Live Chart</h3>
+    <div class="tradingview-widget-container" style="height:350px;">
+        <div id="tradingview_nifty"></div>
+        <script type="text/javascript" src="https://tradingview.com"></script>
+        <script type="text/javascript">
+        new TradingView.widget({
+            "autosize": true,
+            "symbol": "NSE:NIFTY",
+            "interval": "D",
+            "timezone": "Asia/Kolkata",
+            "theme": "dark",
+            "style": "1",
+            "locale": "in",
+            "toolbar_bg": "#f1f3f6",
+            "enable_publishing": false,
+            "hide_side_toolbar": false,
+            "allow_symbol_change": true,
+            "container_id": "tradingview_nifty"
+        });
+        </script>
+    </div>
+</div>
