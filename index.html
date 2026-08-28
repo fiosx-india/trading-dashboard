@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional TV Trading Dashboard</title>
+    <title>My Personal Trading Dashboard</title>
     <style>
+        /* டிவி மற்றும் மொபைல் திரைக்கு ஏற்ற வடிவமைப்பு */
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
         body {
-            background-color: #0c0f14;
+            background-color: #0c0f14; /* டிரேடிங்கிற்கு ஏற்ற டார்க் பேக்கிரவுண்ட் */
             font-family: Arial, sans-serif;
             overflow: hidden;
             height: 100vh;
             width: 100vw;
         }
-        /* 💡 டிவியின் பெரிய திரைக்கு ஏற்ப 3 பத்திகள், 2 வரிசைகளாக கச்சிதமாகப் பிரிக்கும் லேஅவுட் */
+        /* திரையை சரியாக 6 பாகங்களாகப் பிரிக்கும் கிரிட் (3 பத்திகள், 2 வரிசைகள்) */
         .dashboard-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-template-rows: repeat(2, 1fr);
-            gap: 8px;
+            gap: 6px;
             width: 100%;
             height: 100%;
-            padding: 8px;
+            padding: 6px;
         }
-        /* ஒவ்வொரு ஆப் பாக்ஸும் டிவியில் நீள நீளமாகத் தெரிய வடிவமைப்பு */
+        /* ஒவ்வொரு ஆப் பாக்ஸின் வடிவமைப்பு */
         .app-box {
             background-color: #161b22;
             border: 2px solid #30363d;
@@ -35,14 +36,11 @@
             position: relative;
             width: 100%;
             height: 100%;
-            overflow: hidden;
         }
-        /* 💡 புதிய வசதி: ஆப்களை 60% ஆகச் சுருக்கி (Zoom Out), டிவி திரையின் நீளத்திற்கு ஏற்ப அலைன்மென்ட் செய்தல் */
+        /* ஆப்களின் பக்கங்கள் முழுமையாக உள்ளே தெரிய */
         .app-box iframe {
-            width: 166.66%; /* 100% / 0.60 */
-            height: 166.66%;
-            transform: scale(0.60); /* எழுத்துக்கள் மற்றும் சார்ட்டுகளை இன்னும் சிறியதாக்குகிறது */
-            transform-origin: top left;
+            width: 100%;
+            height: 100%;
             border: none;
         }
         /* ஆப்களின் தலைப்புப் பெயர் */
@@ -50,8 +48,8 @@
             position: absolute;
             top: 6px;
             left: 6px;
-            background: rgba(0, 0, 0, 0.85);
-            color: #58a6ff;
+            background: rgba(0, 0, 0, 0.8);
+            color: #58a6ff; /* நீல நிற ஹைலைட் */
             padding: 3px 10px;
             font-size: 11px;
             font-weight: bold;
@@ -66,40 +64,40 @@
 
     <div class="dashboard-grid">
         
-        <!-- ஆப் 1: Angel One Live Data -->
+        <!-- ஆப் 1: Emergent Chat -->
         <div class="app-box">
-            <div class="app-title">1. Angel One Connection</div>
-            <iframe src="https://streamlit.app"></iframe>
+            <div class="app-title">1. Emergent Chat</div>
+            <iframe src="https://app.emergent.sh/chat"></iframe>
         </div>
 
         <!-- ஆப் 2: Trend Oracle Signals -->
         <div class="app-box">
             <div class="app-title">2. Trend Oracle Signals</div>
-            <iframe src="https://lovable.app"></iframe>
+            <iframe src="https://trend-oracle-now.lovable.app/signals"></iframe>
         </div>
 
-        <!-- ஆப் 3: Alpha Quantum Pro -->
+        <!-- ஆப் 3: Bolt Host App -->
         <div class="app-box">
-            <div class="app-title">3. Alpha Quantum Pro</div>
-            <iframe src="https://streamlit.app"></iframe>
+            <div class="app-title">3. Application Development (Bolt)</div>
+            <iframe src="https://application-developm-1ef9.bolt.host"></iframe>
         </div>
 
-        <!-- ஆப் 4: Market Pulse -->
+        <!-- ஆப் 4: Universal Candlestick Engine -->
         <div class="app-box">
-            <div class="app-title">4. Market Pulse</div>
-            <iframe src="https://streamlit.app"></iframe>
+            <div class="app-title">4. Universal Candlestick Engine</div>
+            <iframe src="https://universalcandlestickengine-5rqqcnbyejsqrhvaqv6quz.streamlit.app/"></iframe>
         </div>
 
-        <!-- ஆப் 5: Emergent Chat -->
+        <!-- ஆப் 5: Marketverse News Intelligence -->
         <div class="app-box">
-            <div class="app-title">5. Emergent Chat</div>
-            <iframe src="https://emergent.sh"></iframe>
+            <div class="app-title">5. Marketverse News Intelligence</div>
+            <iframe src="https://marketverse-news-intelligence-bwr8sgbyihfctid5hzx6q7.streamlit.app/"></iframe>
         </div>
 
-        <!-- ஆப் 6: Application Development -->
+        <!-- ஆப் 6: Angel One Connection App -->
         <div class="app-box">
-            <div class="app-title">6. Application Development</div>
-            <iframe src="https://bolt.host"></iframe>
+            <div class="app-title">6. Angel One Connection</div>
+            <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/#1-angel-one-connection"></iframe>
         </div>
 
     </div>
