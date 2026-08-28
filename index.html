@@ -5,59 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Personal Trading Dashboard</title>
     
-    <!-- JS Proxy மாட்யூல்களை இணைக்கவும் (Iframe லாக்கை உடைக்க) -->
+    <!-- Iframe லாக்கை உடைக்க தேவையான சரியான UNPKG JS லைப்ரரிகள் -->
     <script src="https://unpkg.com"></script>
     <script src="https://unpkg.com" type="module"></script>
     
     <style>
-        /* உங்கள் டார்க் தீம் கிரிட் ஸ்டைல் */
-        body { background-color: #0d1117; color: white; font-family: sans-serif; }
-        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 15px; }
-        @media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } }
-        .card { border: 1px solid #30363d; background: #161b22; border-radius: 8px; padding: 10px; min-height: 400px; }
-        iframe { width: 100%; height: 350px; border: none; border-radius: 4px; }
+        /* டார்க் தீம் கிரிட் லேஅவுட் ஸ்டைல் */
+        body { background-color: #0d1117; color: white; font-family: sans-serif; margin: 0; padding: 10px; }
+        .grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; padding: 10px; }
+        @media (max-width: 900px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .grid-container { grid-template-columns: 1fr; } }
+        .card { border: 1px solid #30363d; background: #161b22; border-radius: 8px; padding: 15px; display: flex; flex-direction: column; justify-content: space-between; min-height: 420px; }
+        h3 { margin-top: 0; color: #58a6ff; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+        iframe { width: 100%; height: 350px; border: none; border-radius: 4px; background: #0d1117; }
+        
+        /* பாதுகாப்பு எச்சரிக்கை மற்றும் பட்டன் ஸ்டைல் */
+        .secure-notice { text-align: center; padding: 40px 10px; color: #8b949e; font-size: 14px; }
+        .open-btn { display: inline-block; background-color: #238636; color: white; text-decoration: none; padding: 10px 20px; border-radius: 6px; font-weight: bold; margin-top: 15px; transition: background 0.2s; }
+        .open-btn:hover { background-color: #2ea043; }
     </style>
 </head>
 <body>
 
     <div class="grid-container">
+        
         <!-- 1. v0 Indian Indicator -->
         <div class="card">
             <h3>1. v0 Indian Indicator</h3>
-            <!-- சாதாரண iframe-க்கு பதிலாக is="x-frame-bypass" சேர்க்கவும் -->
-            <iframe is="x-frame-bypass" src="YOUR_V0_APP_URL"></iframe>
+            <!-- ஒருவேளை iframe லாக் ஆகித் தெரியவில்லை எனில், கீழே உள்ள பாதுகாப்பு பட்டன் உதவும் -->
+            <iframe is="x-frame-bypass" src="https://v0.dev"></iframe>
+            <div class="secure-notice">
+                <p>பாதுகாப்பு விதிகள் காரணமாக நேரடியாக உள்ளே தெரியவில்லை எனில்:</p>
+                <a href="https://v0.dev" target="_blank" class="open-btn">Open App ↗</a>
+            </div>
         </div>
 
         <!-- 2. Emergent Chat -->
         <div class="card">
             <h3>2. Emergent Chat</h3>
-            <iframe is="x-frame-bypass" src="YOUR_EMERGENT_CHAT_URL"></iframe>
+            <iframe is="x-frame-bypass" src="https://openai.com"></iframe>
+            <div class="secure-notice">
+                <p>பாதுகாப்பு விதிகள் காரணமாக நேரடியாக உள்ளே தெரியவில்லை எனில்:</p>
+                <a href="https://openai.com" target="_blank" class="open-btn">Open App ↗</a>
+            </div>
         </div>
 
         <!-- 3. Lovable Project -->
         <div class="card">
             <h3>3. Lovable Project</h3>
-            <iframe is="x-frame-bypass" src="YOUR_LOVABLE_PROJECT_URL"></iframe>
+            <iframe is="x-frame-bypass" src="https://lovable.dev"></iframe>
+            <div class="secure-notice">
+                <p>பாதுகாப்பு விதிகள் காரணமாக நேரடியாக உள்ளே தெரியவில்லை எனில்:</p>
+                <a href="https://lovable.dev" target="_blank" class="open-btn">Open App ↗</a>
+            </div>
         </div>
 
         <!-- 4. Bolt Indian Stock Market -->
         <div class="card">
             <h3>4. Bolt Indian Stock Market</h3>
-            <iframe src="YOUR_BOLT_URL"></iframe>
+            <!-- TradingView லைவ் இன்டிகேட்டர் விட்ஜெட் (செக்யூரிட்டி லாக் எரர் வராது) -->
+            <div class="tradingview-widget-container" style="height:350px;">
+                <div id="tradingview_nifty"></div>
+                <script type="text/javascript" src="https://tradingview.com"></script>
+                <script type="text/javascript">
+                new TradingView.widget({
+                    "autosize": true, "symbol": "NSE:NIFTY", "interval": "D", "timezone": "Asia/Kolkata",
+                    "theme": "dark", "style": "1", "locale": "in", "enable_publishing": false,
+                    "hide_side_toolbar": false, "allow_symbol_change": true, "container_id": "tradingview_nifty"
+                });
+                </script>
+            </div>
         </div>
 
         <!-- 5. Streamlit Angel One -->
         <div class="card">
             <h3>5. Streamlit Angel One</h3>
-            <!-- Streamlit லாக்கையும் இது பைபாஸ் செய்யும் -->
-            <iframe is="x-frame-bypass" src="YOUR_STREAMLIT_APP_URL"></iframe>
+            <iframe is="x-frame-bypass" src="https://streamlit.io"></iframe>
+            <div class="secure-notice">
+                <p>பாதுகாப்பு விதிகள் காரணமாக நேரடியாக உள்ளே தெரியவில்லை எனில்:</p>
+                <a href="https://streamlit.io" target="_blank" class="open-btn">Open App ↗</a>
+            </div>
         </div>
 
         <!-- 6. Master Dashboard -->
         <div class="card">
             <h3>6. Master Dashboard</h3>
-            <iframe src="YOUR_DASHBOARD_DATA_URL"></iframe>
+            <!-- TradingView பலதரப்பட்ட மார்க்கெட் நிலவர விட்ஜெட் -->
+            <iframe src="https://tradingview.com" style="height: 380px;"></iframe>
         </div>
+        
     </div>
 
 </body>
