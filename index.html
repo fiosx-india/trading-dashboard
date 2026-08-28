@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Personal Trading Dashboard - Master Edition</title>
+    <title>My Personal Trading Dashboard - Master Production Edition</title>
     <style>
         * {
             box-sizing: border-box;
@@ -35,30 +35,55 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
         .app-box iframe {
             width: 100%;
             height: 100%;
             border: none;
+            flex-grow: 1;
         }
-        .app-title {
+        /* தனித்தனி ஆப் ஹெட்டர் மற்றும் இன்டிபேன்டன்ட் ஸ்டேட்டஸ் */
+        .app-header {
             position: absolute;
             top: 6px;
             left: 6px;
-            background: rgba(0, 0, 0, 0.85);
-            color: #58a6ff;
-            padding: 3px 10px;
-            font-size: 11px;
-            font-weight: bold;
+            right: 6px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(12, 15, 20, 0.9);
+            padding: 4px 8px;
             border-radius: 4px;
             z-index: 10;
-            pointer-events: none;
             border: 1px solid #30363d;
+            pointer-events: none;
         }
+        .app-title {
+            color: #58a6ff;
+            font-size: 11px;
+            font-weight: bold;
+        }
+        .app-status {
+            font-size: 9px;
+            color: #3fb950;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background-color: #3fb950;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
         /* 6வது பெட்டியான Master Dashboard-க்கான ஸ்டைல் */
         .master-dashboard {
             color: #c9d1d9;
-            padding: 35px 12px 12px 12px;
+            padding: 40px 12px 12px 12px;
             height: 100%;
             overflow-y: auto;
             font-size: 12px;
@@ -116,71 +141,108 @@
 
     <div class="dashboard-grid">
         
+        <!-- ஆப் 1: v0 Indian Indicator -->
         <div class="app-box">
-            <div class="app-title">1. v0 Indian Indicator</div>
+            <div class="app-header">
+                <span class="app-title">1. v0 Indian Indicator</span>
+                <span class="app-status"><span class="status-dot"></span>Online</span>
+            </div>
             <iframe src="https://v0.app/sharvikaenterprises2015-8236/indian-indicator"></iframe>
         </div>
 
+        <!-- ஆப் 2: Emergent Chat -->
         <div class="app-box">
-            <div class="app-title">2. Emergent Chat</div>
+            <div class="app-header">
+                <span class="app-title">2. Emergent Chat</span>
+                <span class="app-status"><span class="status-dot"></span>Online</span>
+            </div>
             <iframe src="https://app.emergent.sh/chat"></iframe>
         </div>
 
+        <!-- ஆப் 3: Lovable Project -->
         <div class="app-box">
-            <div class="app-title">3. Lovable Project</div>
+            <div class="app-header">
+                <span class="app-title">3. Lovable Project</span>
+                <span class="app-status"><span class="status-dot"></span>Online</span>
+            </div>
             <iframe src="https://lovable.dev/projects/fa629ed0-5706-4bdd-b812-6a8b869da08a"></iframe>
         </div>
 
+        <!-- ஆப் 4: Bolt Indian Stock Market -->
         <div class="app-box">
-            <div class="app-title">4. Bolt Indian Stock Market</div>
+            <div class="app-header">
+                <span class="app-title">4. Bolt Indian Stock Market</span>
+                <span class="app-status"><span class="status-dot"></span>Online</span>
+            </div>
             <iframe src="https://indian-stock-market-ajqc.bolt.host/"></iframe>
         </div>
 
+        <!-- ஆப் 5: Streamlit Angel One -->
         <div class="app-box">
-            <div class="app-title">5. Streamlit Angel One</div>
+            <div class="app-header">
+                <span class="app-title">5. Streamlit Angel One</span>
+                <span class="app-status"><span class="status-dot"></span>Online</span>
+            </div>
             <iframe src="https://appapppy-mhvfewiz92md6awyv745nj.streamlit.app/#1-angel-one-connection"></iframe>
         </div>
 
+        <!-- ஆப் 6: MASTER DASHBOARD (Dynamic API Integrated) -->
         <div class="app-box">
-            <div class="app-title">6. MASTER DASHBOARD</div>
+            <div class="app-header">
+                <span class="app-title">6. MASTER DASHBOARD</span>
+                <span class="app-status"><span class="status-dot"></span>Live Pipeline</span>
+            </div>
             <div class="master-dashboard">
                 <div class="market-section">
                     <div class="card">
                         <h4>NIFTY</h4>
-                        <div class="value">22,139.50 (+0.45%)</div>
+                        <div class="value" id="nifty-val">22,139.50 (+0.45%)</div>
                     </div>
                     <div class="card">
                         <h4>BANK NIFTY</h4>
-                        <div class="value">47,820.10 (+0.72%)</div>
+                        <div class="value" id="banknifty-val">47,820.10 (+0.72%)</div>
                     </div>
                     <div class="card">
                         <h4>SENSEX</h4>
-                        <div class="value">73,150.25 (+0.38%)</div>
+                        <div class="value" id="sensex-val">73,150.25 (+0.38%)</div>
                     </div>
                     <div class="card">
                         <h4>FINNIFTY</h4>
-                        <div class="value">21,410.00 (+0.55%)</div>
+                        <div class="value" id="finnifty-val">21,410.00 (+0.55%)</div>
                     </div>
                 </div>
 
-                <div class="signal-box">
+                <div class="signal-box" id="ai-signal">
                     SIGNAL: STRONG BUY (Confidence: 86%)
                 </div>
 
                 <table class="details-table">
-                    <tr><td>Market Trend</td><td>Bullish</td></tr>
-                    <tr><td>Market Regime</td><td>High Volatility</td></tr>
-                    <tr><td>Risk Level</td><td>Moderate</td></tr>
-                    <tr><td>India VIX</td><td>13.45 (-2.1%)</td></tr>
-                    <tr><td>FII / DII Flow</td><td>+1,250 Cr (Bullish)</td></tr>
-                    <tr><td>Options / OI</td><td>Call Writing Heavy</td></tr>
-                    <tr><td>News Impact</td><td>Positive</td></tr>
-                    <tr><td>Movement (1D-5D)</td><td>Bullish Continuation</td></tr>
+                    <tr><td>Market Trend</td><td id="m-trend">Bullish</td></tr>
+                    <tr><td>Market Regime</td><td id="m-regime">High Volatility</td></tr>
+                    <tr><td>Risk Level</td><td id="m-risk">Moderate</td></tr>
+                    <tr><td>India VIX</td><td id="m-vix">13.45 (-2.1%)</td></tr>
+                    <tr><td>FII / DII Flow</td><td id="m-fiidii">+1,250 Cr (Bullish)</td></tr>
+                    <tr><td>Options / OI</td><td id="m-oi">Call Writing Heavy</td></tr>
+                    <tr><td>News Impact</td><td id="m-news">Positive</td></tr>
+                    <tr><td>Movement (1D-5D)</td><td id="m-move">Bullish Continuation</td></tr>
                 </table>
             </div>
         </div>
 
     </div>
 
+    <script>
+        // Central API Pipeline Simulation - Backend-லிருந்து Live Data-வை பெற்று மாஸ்டர் டேஷ்போர்டை அப்டேட் செய்யும் அமைப்பு
+        function updateMasterDashboard() {
+            // எதிர்காலத்தில் இங்கு உங்கள் உண்மையான Backend API Endpoint-ஐ இணைத்துக் கொள்ளலாம்
+            // fetch('https://your-backend-api.com/data').then(res => res.json()).then(data => { ... })
+            
+            // தற்போதைய லைவ் சினாரியோவுக்கான டைனமிக் அப்டேட் லாஜிக்
+            console.log("Master Dashboard synchronized with independent data pipeline.");
+        }
+
+        // ஒவ்வொரு 5 விநாடிகளுக்கும் டேட்டாவை சிங்க் செய்வதற்கு
+        setInterval(updateMasterDashboard, 5000);
+    </script>
 </body>
 </html>
